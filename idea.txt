@@ -1,0 +1,67 @@
+bsc_sniper_bot/
+├── config/
+│   └── settings.py          # RPC, wallet, slippage configs
+├── core/
+│   ├── snipe_normal.py      # Normal liquidity sniping logic
+│   ├── snipe_mempool.py     # Mempool transaction scanner
+│   ├── anti_honeypot.py     # Rug & honeypot detection
+│   ├── auto_sell.py         # Auto-sell feature logic
+│   └── telegram_bot.py      # Telegram bot commands + notifications
+├── utils/
+│   ├── build_tx.py          # Build transaction logic
+│   ├── check_token.py       # Token info fetcher
+│   └── helpers.py
+├── .env                     # Private keys, Telegram token
+├── requirements.txt
+└── main.py
+
+
+//
+
+Here’s our hit list for the next session:
+
+✅ 1️⃣ Wire up /snipe Command
+→ When you type /snipe in the bot, it should reply with:
+
+A message asking for the token contract address
+
+Confirming token details fetched via check_token.py
+
+Show default buy amounts (like 0.25 BNB, 0.5 BNB, etc.)
+
+Slippage options
+
+A final Confirm Buy button
+
+✅ 2️⃣ Integrate the Normal Sniper Logic
+→ As you said, we’ll:
+
+Only work on normal snipe mode first (ignore mempool mode for now)
+
+Set up buy transaction building in build_tx.py
+
+Execute the buy via web3.py using the custom Binance DEX Router ABI and address you gave
+
+✅ 3️⃣ Test a small buy on test tokens
+→ Just to confirm liquidity detection + transaction sending works
+
+📖 Bonus: Later steps
+After normal snipe is smooth:
+
+Add anti-honeypot detection
+
+Setup auto-sell conditions
+
+Finally, build mempool sniping module
+
+📅 So tomorrow, we start from:
+/snipe command wiring
+
+Contract address input + options display
+
+And trigger transaction logic.
+
+PancakeV3Factory = 0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865
+Binance: DEX Router = 0xb300000b72DEAEb607a12d5f54773D1C19c7028d
+
+i think biance use PancakeV3Factory and Biannce dex router to use add liquidity and complete swap on biance web3 wallet.
